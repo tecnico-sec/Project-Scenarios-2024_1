@@ -67,7 +67,11 @@ You can assume that the user and the service share a secret value.
 
 ### Security Challenge
 
-(to appear later)
+Use cryptography options that allow playback to quickly start in the middle of an audio stream, optimizing user experience without compromising security.  
+Add the concept of _family sharing_, where individual users can be members of the same family, and a protected song should be accessible to all family members without modification.  
+Each user still only has its own key, so, some dynamic key distribution will have to be devised.
+
+To support these new requirements, the cryptographic library (including the CLI) and the infrastructure should be extended as needed.
 
 ## 2. Restaurants & Tourism: BombAppetit
 
@@ -126,7 +130,13 @@ You can assume that the user and the service share their respective public keys.
 
 ### Security Challenge
 
-(to appear later)
+Introduce _reviews_ with classification made by users, e.g. 1 to 5 stars and some text.
+Reviews should be non-repudiable and other users must be able to verify the authenticity of each review, to ensure credibility and trustworthiness in user feedback.  
+Regarding the _vouchers_, each one is tied to a specific user and can only be used once.
+Moreover, a new mechanism must be implemented to allow users to directly transfer vouchers to other users of the service.  
+Each user still only has its own keys, so, some dynamic key distribution will have to be devised.
+
+To support these new requirements, the cryptographic library (including the CLI) and the infrastructure should be extended as needed.
 
 ## 3. Insurance & Banking: BlingBank
 
@@ -173,7 +183,14 @@ You can assume that the user and the service share a secret key.
 
 ### Security Challenge
 
-(to appear later)
+Introduce a new document format specifically for _payment orders_.
+This format should be designed to guarantee confidentiality, authenticity, and non-repudiation of each transaction.  
+Implement robust freshness measures to prevent duplicate executions of the order.
+A duplicate order should never be accepted.  
+Also, for accounts with _multiple owners_, e.g. Alice and Bob, require authorization and non-repudiation from all owners before the payment order is executed.  
+Given the new requirements above, especially non-repudiation, each user will likely need some new keys, and a dynamic key distribution will have to be devised, starting with the existing keys.
+
+To support these new requirements, the cryptographic library (including the CLI) and the infrastructure should be extended as needed.
 
 ## 4. Healthcare: MediTrack
 
@@ -226,7 +243,12 @@ You can assume that the user and the service share public keys.
 
 ### Security Challenge
 
-(to appear later)
+Each consultation record should be _digitally signed_ by the physician in a non-repudiable way.  
+Also, introduce _controlled sharing_, a form of discretionary access control, to allow patients to selectively disclose parts of their medical records while keeping other sections confidential.
+However, in emergency situations when a patient is admitted to an emergency service, there should be a mechanism to override these restrictions and grant full access to the records.  
+Each user still only has its own keys, so, some dynamic key distribution will have to be devised.  
+
+To support these new requirements, the cryptographic library (including the CLI) and the infrastructure should be extended as needed.
 
 ----
 
